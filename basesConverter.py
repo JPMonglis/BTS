@@ -6,14 +6,17 @@
 # Date: Thu Sep 1, 2016
 # Version: 1.0
 #/
-def base10():
-	print "b4se/menu/base10>"
+import os
+import re 
 
-def base8():
-	print "b4s3/menu/base8>"
-
-def base2():
-	print "b4s3/menu/base2>"
+def report(base16, base10, base8, base2):
+	os.system('clear')
+	print "+"+"-"*20+"   REPORT   "+"-"*20
+	print "|  Hexadecimal: \t"+base16
+	print "|  Decimal:\t\t"+base10
+	print "|  Octal:\t\t"+base8
+	print "|  Binary:\t\t"+base2
+	print "+"+"-"*52+"\n"
 
 def menu():
 	styleOn= '\x1b[7m'
@@ -21,18 +24,50 @@ def menu():
  
 	while True:
 		print "\t\t  "+styleOn+" M A I N - M E N U "+styleOff
-		print "\n\t01. Insert base 10 number"
-		print "\t02. Insert base 8 number"
-		print "\t03. Insert base 2 number"
-		print "\t66. EXIT\n"
+		print "\n\t01. Hexadecimal to other"
+		print "\t02. Decimal     to other"
+		print "\t03. Octal       to other"
+		print "\t04. Binary      to other"
+		print "\n\t66. EXIT\n"
 
 		rep= raw_input('b4s3/menu> ')
+
 		if rep== 1 or rep== '1':
-			base10()
+			print '\nInput a base 16 number ...'
+			hexa= raw_input('b4s3/menu/hexa> ')
+			if re.match( '^[0-9a-fA-F]+$', hexa):
+				decimal= str(int(hexa, 16))
+				octal=   oct(int(hexa, 16))[1:]
+				binary=  bin(int(hexa, 16)).split('0b')[1]
+				report(hexa, decimal, octal, binary)
+
 		elif rep== 2 or rep== '2':
-			base8()
+			print '\nInput a base 10 number ...'
+			decimal= raw_input('b4s3/menu/decimal> ')
+			if re.match('^[0-9]+$', decimal):
+				hexa=   hex(int(decimal)).split('0x')[1]
+				octal=  oct(int(decimal))[1:]
+				binary= bin(int(decimal)).split('0b')[1]
+				report(hexa, decimal, octal, binary)
+		
 		elif rep== 3 or rep== '3':
-			base2()
+			print '\nInput a base 8 number ...'
+			octal= raw_input('b4s3/menu/octal> ')
+			if re.match('^[0-9]+$', octal):
+				hexa=    hex(int(octal, 8)).split('0x')[1]
+				decimal= str(int(octal, 8))
+				binary=  bin(int(octal, 8)).split('0b')[1]
+				report(hexa, decimal, octal, binary)
+
+		elif rep== 4 or rep== '4':
+			print '\nInput a base 2 number ...'
+			binary= raw_input('b4s3/menu/binary> ')
+			if re.match( '^[0-1]+$', binary):
+				hexa=    hex(int(binary, 2)).split('0x')[1]
+				decimal= str(int(binary, 2))
+				octal=   oct(int(binary, 2))[1:]
+				report(hexa, decimal, octal, binary)
+
 		elif rep== 66 or rep== '66':
 			print "Have a nice day 1337\n"
 			exit()
