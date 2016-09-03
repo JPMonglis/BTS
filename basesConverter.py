@@ -3,11 +3,12 @@
 
 #\
 # Author: Paul Laîné
-# Date: Thu Sep 1, 2016
-# Version: 1.0
+# Date: Sat Sep 3, 2016
+# Version: 1.1
 #/
 import os
 import re 
+import sys
 
 def report(base16, base10, base8, base2):
 	os.system('clear')
@@ -83,10 +84,10 @@ def banner():
 
 	print '\n'+b+' [---]     The base (10/2/8) Converter                   [---]'
 	print ' [---]     Created by: '+r+'Paul Laîné'+b+' ('+y+'palaine'+b+')              [---]'
-	print '                   Version: '+r+'1.0'+b
+	print '                   Version: '+r+'1.1'+b
 	print '                   Codename: '+y+'\'b4s3\' '+b
 	print ' [---]     On Github: '+y+'https://www.github.com/palaine'+b+'     [---]'+d+'\n'
 	 
 if __name__ == "__main__" :
 	banner()
-	menu()
+	sys.exit(menu())
