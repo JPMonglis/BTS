@@ -24,6 +24,7 @@ def main():
 	
 	print '['+r+'!'+d+'] Changing Git identity ... OK'
 	print '['+r+'!'+d+'] Have nice commit'
+	print '['+r+'!'+d+'] And see you later 1337.'
 	print '['+r+'!'+d+'] Exiting from the program ...'
 
 if __name__ == '__main__':
